@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        background-color: grey;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .center {
+        width: 500px;
+        height: 300px;
+        padding: 30px;
+        background-color: aqua;
+        border-radius: 10px;
+      }
+
+      .center h1 {
+        text-align: center;
+        color: blue;
+        margin-bottom: 40px;
+      }
+
+      .center input {
+        width: 100%;
+        padding: 10px;
+      }
+
+      input[type="submit"] {
+        background-color: olive;
+        color: aliceblue;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="center">
+        <h1>Member Login</h1>
+        <form action="" onsubmit="checkUserCredentials(event)">
+          <input type="text" id="username" placeholder="User Name" /><br /><br />
+          <input type="password" id="password" placeholder="Password" /><br /><br />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+    </div>
+    <script>
+      let userName = document.getElementById("username");
+      let password = document.getElementById("password");
+
+      const users = [
+        { username: "amitghade", password: "123456" },
+        { username: "prasanna", password: "pras1234" },
+        { username: "aryan", password: "aryan12434" },
+        { username: "prathamesh", password: "prathamesh1234" },
+      ];
+
+      function checkUserCredentials(event) {
+        event.preventDefault();
+
+        
+        const user = users.find(u => u.username === userName.value);
+        
+        if (user === undefined) {
+          
+          alert("Username invalid");
+        } else if (user.password !== password.value) {
+          
+          alert("Incorrect password");
+        } else {
+          
+          console.log("Login successful");
+          window.location = "../platina.html"; 
+        }
+      }
+    </script>
+  </body>
+</html>
